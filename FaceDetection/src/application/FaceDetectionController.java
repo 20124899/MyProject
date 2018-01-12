@@ -178,8 +178,7 @@ public class FaceDetectionController
 	private void detectAndDisplay(Mat frame)
 	{
 		MatOfRect faces = new MatOfRect();
-		Mat grayFrame = new Mat();
-		
+		Mat grayFrame = new Mat();	
 		// convert the frame in gray scale
 		Imgproc.cvtColor(frame, grayFrame, Imgproc.COLOR_BGR2GRAY);
 		// equalize the frame histogram to improve the result
@@ -194,11 +193,9 @@ public class FaceDetectionController
 				this.absoluteFaceSize = Math.round(height * 0.2f);
 			}
 		}
-		
 		// detect faces
 		this.faceCascade.detectMultiScale(grayFrame, faces, 1.1, 2, 0 | Objdetect.CASCADE_SCALE_IMAGE,
 				new Size(this.absoluteFaceSize, this.absoluteFaceSize), new Size());
-				
 		// each rectangle in faces is a face: draw them!
 		Rect[] facesArray = faces.toArray();
 		for (int i = 0; i < facesArray.length; i++)
@@ -217,7 +214,7 @@ public class FaceDetectionController
 		if (this.lbpClassifier.isSelected())
 			this.lbpClassifier.setSelected(false);
 			
-		this.checkboxSelection("resources/haarcascades/haarcascade_frontalface_alt.xml");
+		this.checkboxSelection("C:\\opencv\\sources\\data\\haarcascades\\haarcascade_frontalface_alt.xml");
 	}
 	
 	/**
